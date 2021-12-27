@@ -53,6 +53,7 @@
 export default {
     props:['value'],
     computed:{
+        //computed property referencing the parent variable passed as a prop from the parent component, to here.
         userDetails:{
             get(){
                 return this.value
@@ -63,11 +64,12 @@ export default {
         }
     },
     methods:{
+        //edit user details
         editUser(id){
             const requestOptions = {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(this.userDetails)
+                body: JSON.stringify(this.userDetails) // convert to json string then pass the computed property.
             };
             fetch(`${process.env.VUE_APP_ROOT_API}/users/${id}`, requestOptions)
                 .then((response) => {

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+      <!-- table component -->
       <user-table></user-table>
   </div>
 </template>

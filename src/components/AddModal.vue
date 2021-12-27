@@ -61,6 +61,7 @@ export default {
         }
     },
     methods:{
+        // create user
         addUser(){
             const requestOptions = {
                 method: 'POST',

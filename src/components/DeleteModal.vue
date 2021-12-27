@@ -42,6 +42,7 @@
 export default {
     props:['id'],
     methods:{
+        // remove user by id pass from prop
         deleteUser(){
             fetch(`${process.env.VUE_APP_ROOT_API}/users/${this.id}`, { method: 'DELETE' })
                 .then((response) => {

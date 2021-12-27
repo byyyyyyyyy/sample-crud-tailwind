@@ -44,9 +44,13 @@
                 </table>
             </div>
         </div>
+        <!-- add user modal -->
         <add-modal v-if="addModal" @close="addModal = false"></add-modal>
+        <!-- view user details modal -->
         <user-modal v-if="viewModal" :current-user="currentUser" @close="viewModal = false"></user-modal>
+        <!-- edit user modal -->
         <edit-modal v-if="editModal" v-model="currentUser" @close="editModal = false"></edit-modal>
+        <!-- delete user modal -->
         <delete-modal v-if="deleteModal" :id="currentUser.id" @close="deleteModal = false"></delete-modal>
     </div>
 </template>
@@ -69,14 +73,17 @@ export default {
         }
     },
     mounted(){
+        //emit event for table refresh
         this.$root.$on('refresh-table', () => {
             this.fetchUsers();
         })
     },
     created(){
+        //added this to created instead of mounted for faster load.
         this.fetchUsers();
     },
     methods:{
+        //fetch users api call
         fetchUsers(){
             fetch(`${process.env.VUE_APP_ROOT_API}/users`)
                 .then(response => response.json())
